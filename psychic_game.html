@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Psychic Game</title>
+</head>
+
+<body>
+
+    <div id="game">
+        <p>if you want to play a game <br> press one of the homerow keys:<br> a s d f g h j k l <br> to start playing!</p>
+    </div>
+
+    <script type="text/javascript">
+        // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+        var homerowKeyComputer = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+
+        // all these variables //
+
+        var
+            wins = 0,
+            losses = 0,
+            userYesPlay = true,
+            userNoPlay = false,
+
+            userRoundsWon = 0,
+            userRoundsLost = 0,
+
+            userWon = 0,
+            userLost = 0,
+
+            userGuesses = 0,
+            userGuessesSoFar = 0,
+
+            computerChoice = ' ',
+            computerGuess = ' ';
+            userGuess = '';
+
+        // This function is run whenever the user presses a key.
+        document.onkeyup = function (event) {
+
+            // Determines which key was pressed.
+            var userGuess = event.key;
+
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = homerowKeyComputer[Math.floor(Math.random() * homerowKeyComputer.length)];
+
+            // Reworked our code from last step to use "else if" instead of lots of if statements.
+
+            // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+
+            document.onkeyup = function (event) {
+
+                /* User guess : .onkeyup : homerow keys */
+
+                var userGuess = event.key;
+
+                /* Computer chooses a homerow key : */
+                var computerChoice = homerowKeyComputer[Math.floor(Math.random() * homerowKeyComputer.length)];
+
+                if ((userGuess === "a") || (userGuess === "s") || (userGuess === "d") || (userGuess === "f") ||
+                    (userGuess === "g") || (userGuess === "h") || (userGuess === "j") || (userGuess === "k") ||
+                    (userGuess === "l")) {
+
+                    if ((userGuess === "a") && (computerChoice === "a")) {
+                        userGuessesSoFar++;
+                        userGuesses = 3 - userGuessesSoFar;
+                        wins++;
+                    } else if ((wins === 3) && (losses === 2)) {
+                        userRoundsWon++;
+                    } else if ((userGuesses === 0) && (userGuessesSoFar === 3)) {
+                        userGuesses = 3;
+                        userGuessesSoFar = 0;
+                    }
+
+                    if ((userGuess != computerGuess)) {
+                        losses++;
+                    } else if ((wins === 2) && (losses === 3)) {
+                        userRoundsLost++;
+                    } else if ((userRoundsWon >= 2) && (userRoundsLost <= 1)) {
+                        userWon++;
+                    } else if ((userRoundsWon <= 1) && (userRoundsLost >= 2)) {
+                        userLost++;
+                    }
+
+                // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
+                var html =
+                    "<p>You Choose :" + userGuess + "<p>" +
+                    "<p>The Computer Choice: " + computerChoice + "</p>" +
+
+                    /* Guesses Left = # of guesses left for the user before they loose the round. */
+                    /* Guesses So Far = # of guesses committed by user */
+                    "<p>Guesses Left: " + userGuesses + "</p>" +
+                    "<p>Guesses So Far: " + userGuessesSoFar + "</p>" +
+
+
+                    /* Round Wins Counter  
+                    /* if (userGuess === computerGuess) {userRoundsWon++;}
+                    */
+                    "<p>Rounds Won : " + userRoundsWon + "</p>" +
+
+                    /* Round Losses Counter */
+                    "<p>Rounds Lost: " + userRoundsLost + "</p>" +
+
+                    /* Wins = # of times the user has guessed the letter */
+                    "<p>Game Wins: " + userWon + "</p>" +
+
+                    /* Losses = # of times user has failed to guess the letter correctly */
+                    "<p>Game Losses: " + userLost + "</p>" +
+
+
+                    /*Attempts / Declines */
+                    "<p>Attempts: " + userYesPlay + "</p>" +
+                    "<p>Declines: " + userNoPlay + "</p>";
+
+                // Set the inner HTML contents of the #game div to our html string
+                document.querySelector("#game").innerHTML = html;
+            }
+        }
+    };
+    </script>
+
+</body>
+
+</html>
