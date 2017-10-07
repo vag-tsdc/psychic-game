@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Psychic Game</title>
+
+    <!-- javascript - game script  -->
+    <link href="javascript/game.js" rel="javascript">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="container">
+                    <div class="col-xs-*">
+                        <div id="game-title">
+                            <h1 id="game-title">
+                                The Psychic Game
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- first container around the first row to start off our game... -->
+
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <!-- Game play prompt -->
+            <div class="container">
+                <div class="col-xs-3">
+                    <div class="container">
+                    <h3 class="question">
+                        Would you like to play a game?
+                    </h3>
+                </div>
+            </div>
+            </div>
+            <!-- Displays the counters upon first round completion... start to the left of would you like to play a game -->
+
+            <div class="container-fluid">
+                <div class="col-xs-5">
+                    <div class="container">
+                        <div class="counterRounds">
+
+                            <!-- User : ROUNDS WON & LOST-->
+                            <h3 class="roundsWon">
+                                Rounds Won :
+                            </h3>
+
+                            <h3 class="roundsLost">
+                                Rounds Lost :
+                            </h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container-fluid">
+                <div class="container">
+                <div class="col-xs-7">
+                        <div class="counterPlays">
+                            <!-- User PLAY : YES / NO -->
+                            <h3>
+                                Games Played :
+                            </h3>
+                            <h3>
+                                Games Avoided :
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="col-xs-2">
+                    <div class="container">
+                        <div class="counterGames">
+
+                            <!-- User : GAMES WON & LOST -->
+                            <h3>
+                                Games Won :
+                            </h3>
+
+                            <h3>
+                                Games Lost :
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-- no games here -->
+
+        <div class="container-fluid">
+            <div class="col-xs-3">
+                <div class="noButton">
+                    <h3 class="answer-no">
+                        No.
+                    </h3>
+                    <!--  this is a glyph i'd use... 
+                                  <a img src="glyphicon glyphicon-thumbs-down"> </a> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- THERE ARE GAMES HERE THO.....!! we try again-->
+
+
+
+        <!-- YES YES YES THEY WANT TO PLAY!!!!!!!!!!!!!!!!!  YES NEEDS to make NO option go away... makes more room for game to occur.  -->
+        <div class="container-fluid">
+
+            <!-- YES BUTTON for true to run the game... on click -->
+            <div class="container">
+                <div class="col-xs-3">
+                    <div class="container">
+                        <div class="yesButton">
+                            <h3 class="answer-yes">
+                                Yes.
+                            </h3>
+                            <!--  this is a glyph i'd use... 
+                        <a img src="glyphicon glyphicon-thumbs-up"> </a>  -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- RULES OF THE GAME : answer-yes:true  game rules take place of NO answer... -->
+
+            <div class="container">
+                <div class="col-xs-5">
+
+                    <div class="container">
+                        <h3 class="rules">
+                            Rules:
+                        </h3>
+                        <p class="rules-text">
+                            The rules of the game are simple:<br> You get 3 attempts to guess the right key.<br> Every 3
+                            tries ends a round.<br> If you win 3 or 5 rounds, you win a game.<br> If you loose more then
+                            2 rounds, you loose the game.
+                            <br> You can play until you think you've lost enough.<br>
+                    </div>
+                    <div class="needHint">
+                        <br> If you need a hint, type <span id="y">'y'</span> or <span id="n">'n'</span> when prompted.
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- GUESS WHAT : prompt + hint -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="userYesPlay">
+                        <h3 class="homerow-prompt-1">
+                            Guess What Key I'm Thinking About Pressing...
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-*">
+                    <div class="userYesPlay-prompt-2">
+                        <p id="homerow-prompt-hint">
+                            ... it's one of the letters on your homerow.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--HINTS ARE CALLED HERE -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="game-hints">
+                    <div class="container">
+                        <!-- need 1? -->
+                        <p id="homerow-hint-1">
+                            Need a hint?
+
+                            <!-- y/n? -->
+                            <span id="yesOrNo">
+                         <span id="y">y</span> /
+                            <span id="n">n</span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- fine -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <span id="homerow-fine"> 
+                <p>fine. </p>
+            </span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-3">
+                    <p id="homerow-hint-2">
+                        a s d f g h j k l
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-3">
+                    <p id="homerow-hint-prompt">
+                        now, guess...
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- display counters below on container & each variable in its own section-->
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-3">
+                    <div id="counterGuesses">
+                        <!-- User : GUESSES USED / LEFT OVER -->
+                        <h3>
+                            Guesses Used :
+                        </h3>
+
+                        <h3>
+                            Guesses Left :
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>
